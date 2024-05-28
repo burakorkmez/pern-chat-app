@@ -35,10 +35,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 				const res = await fetch("/api/auth/me");
 				const data = await res.json();
 				if (!res.ok) {
-					throw new Error(data.message);
+					throw new Error(data.error);
 				}
 				setAuthUser(data);
-			} catch (error) {
+			} catch (error: any) {
 				console.error(error);
 				toast.error(error.message);
 			} finally {
