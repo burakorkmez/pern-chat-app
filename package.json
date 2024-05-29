@@ -4,7 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts"
+		"dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts",
+		"build": "tsc && npm install && prisma generate --schema=./backend/prisma/schema.prisma && npm install --prefix frontend && npm run build --prefix frontend",
+		"start": "node backend/dist/src/index.js"
 	},
 	"type": "module",
 	"keywords": [],
